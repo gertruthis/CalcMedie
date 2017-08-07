@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">CalcMedie</string>
+    <string name="medie_semestre">Calc. media pe semestru</string>
+    <string name="medie_an">Calc. media anuala</string>
+    <string name="teza_select">Cu teza</string>
+    <string name="teza">Teza:</string>
+    <string name="note">Note:</string>
+    <string name="nota_urm">Nota urmatoare:</string>
+    <string name="calculeaza">Calculeaza media!</string>
+    <string name="sterge">Sterge</string>
+    <string name="semI">Sem I:</string>
+    <string name="semII">Sem II:</string>
+    <string name="media_finala">Media: </string>
+</resources>
