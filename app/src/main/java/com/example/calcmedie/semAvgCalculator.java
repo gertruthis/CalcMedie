@@ -8,12 +8,10 @@ public class semAvgCalculator {
 
     NoteleElevului note;
 
-    semAvgCalculator(){note = new NoteleElevului();};
+    //semAvgCalculator(){note = new NoteleElevului();};
     semAvgCalculator(NoteleElevului n){
         note = new NoteleElevului();
         note = n;
-
-
     }
 
     public float calculateAVG(){
