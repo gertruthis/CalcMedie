@@ -77,10 +77,6 @@ public class AvgSemester extends AppCompatActivity {
                         editText2.setText("");
                     }
                 }
-                InputMethodManager imm = (InputMethodManager)
-                        getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.showSoftInput(editText2,
-                        InputMethodManager.SHOW_IMPLICIT);
                 return false;
             }
         });
