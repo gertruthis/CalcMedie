@@ -1,5 +1,6 @@
 package com.example.calcmedie;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -31,8 +33,6 @@ public class AvgSemester extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_avg_semester);
 
-        Intent intent = getIntent();
-
         CheckBox cb = (CheckBox) findViewById(R.id.checkBox);
         cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
 
@@ -50,13 +50,11 @@ public class AvgSemester extends AppCompatActivity {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    if(NoteCanBeAdded(Float.parseFloat(editText.getText().toString()))) {
+                    if(!editText.getText().toString().equals(new String("")) && NoteCanBeAdded(Float.parseFloat(editText.getText().toString()))) {
+                        savePartialNote(editText.getText().toString());
+                    }else {
                         showAlert();
                         editText.setText("");
-                    }else {
-
-                        savePartialNote(editText.getText().toString());
-                        disableEdittext(editText);
                     }
                 }
                 return false;
@@ -69,16 +67,20 @@ public class AvgSemester extends AppCompatActivity {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_NEXT) {
-                    if(NoteCanBeAdded(Float.parseFloat(editText2.getText().toString()))) {
-                        showAlert();
-                        editText2.setText("");
-                    }else {
+                    if(!editText2.getText().toString().equals(new String("")) && NoteCanBeAdded(Float.parseFloat(editText2.getText().toString()))) {
                         addNewNote(editText2.getText().toString());
                         editText2.setText("");
                         showNoteFields();
                         addNewNoteToTextfield();
+                    }else {
+                        showAlert();
+                        editText2.setText("");
                     }
                 }
+                InputMethodManager imm = (InputMethodManager)
+                        getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.showSoftInput(editText2,
+                        InputMethodManager.SHOW_IMPLICIT);
                 return false;
             }
         });
@@ -130,7 +132,7 @@ public class AvgSemester extends AppCompatActivity {
     }
 
     private boolean NoteCanBeAdded(float note){
-        return (1 > note || note > 10);
+        return ((1 <= note) && (note <= 10));
     }
 
     private void addNewNoteToTextfield(){
@@ -185,8 +187,4 @@ public class AvgSemester extends AppCompatActivity {
         note.addNote(Float.parseFloat(f));
     }
 
-    private void disableEdittext(EditText edt){
-        edt.setActivated(false);
-        edt.setFocusable(false);
-    }
 }

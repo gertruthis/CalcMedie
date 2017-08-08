@@ -20,9 +20,11 @@
         android:id="@+id/editText5"
         android:layout_width="79dp"
         android:layout_height="48dp"
+        android:editable="false"
         android:ems="10"
         android:inputType="numberDecimal"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textView7"
         app:layout_constraintLeft_toRightOf="@+id/textView7"
-        app:layout_constraintBaseline_toBaselineOf="@+id/textView7" />
+        app:layout_constraintRight_toRightOf="parent"
+        tools:editable="false" />
 </android.support.constraint.ConstraintLayout>
