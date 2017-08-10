@@ -16,10 +16,12 @@ public class MainCalc extends AppCompatActivity {
     public void startAvgSemester(View view){
         Intent intent = new Intent(this, AvgSemester.class);
         startActivity(intent);
+        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
     }
 
     public void startFinalAvg(View view){
         Intent intent = new Intent(this, FinalAvg.class);
         startActivity(intent);
+        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
     }
 }

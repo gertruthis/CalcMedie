@@ -63,7 +63,7 @@ public class FinalAvg extends AppCompatActivity {
             Intent i = new Intent(this, ResultShower.class);
             i.putExtra("vegso_jegy", Float.toString(new semAvgCalculator(note).calculateAVG()));
             startActivity(i);
-
+            overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
         }else{
             showAlert();
         }
